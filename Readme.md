@@ -1,3 +1,5 @@
+<h1> Launch Rviz simulation </h1>
+
 
 >cd chapter3_ws
 
