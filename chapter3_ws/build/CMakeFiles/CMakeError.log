@@ -1,0 +1,65 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/andresvergara/chapter3_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_219c0/fast && /usr/bin/make  -f CMakeFiles/cmTC_219c0.dir/build.make CMakeFiles/cmTC_219c0.dir/build
+make[1]: se entra en el directorio '/home/andresvergara/chapter3_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_219c0.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD -o CMakeFiles/cmTC_219c0.dir/src.c.o -c /home/andresvergara/chapter3_ws/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_219c0
+/home/andresvergara/anaconda3/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_219c0.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD -rdynamic CMakeFiles/cmTC_219c0.dir/src.c.o -o cmTC_219c0 
+CMakeFiles/cmTC_219c0.dir/src.c.o: En la función `main':
+src.c:(.text+0x3e): referencia a `pthread_create' sin definir
+src.c:(.text+0x4a): referencia a `pthread_detach' sin definir
+src.c:(.text+0x56): referencia a `pthread_cancel' sin definir
+src.c:(.text+0x67): referencia a `pthread_join' sin definir
+src.c:(.text+0x7b): referencia a `pthread_atfork' sin definir
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_219c0.dir/build.make:105: fallo en las instrucciones para el objetivo 'cmTC_219c0'
+make[1]: *** [cmTC_219c0] Error 1
+make[1]: se sale del directorio '/home/andresvergara/chapter3_ws/build/CMakeFiles/CMakeTmp'
+Makefile:140: fallo en las instrucciones para el objetivo 'cmTC_219c0/fast'
+make: *** [cmTC_219c0/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/andresvergara/chapter3_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8e2fa/fast && /usr/bin/make  -f CMakeFiles/cmTC_8e2fa.dir/build.make CMakeFiles/cmTC_8e2fa.dir/build
+make[1]: se entra en el directorio '/home/andresvergara/chapter3_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8e2fa.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_8e2fa.dir/CheckFunctionExists.c.o -c /home/andresvergara/anaconda3/lib/python3.8/site-packages/cmake/data/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8e2fa
+/home/andresvergara/anaconda3/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e2fa.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_8e2fa.dir/CheckFunctionExists.c.o -o cmTC_8e2fa  -lpthreads 
+/usr/bin/ld: no se puede encontrar -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_8e2fa.dir/build.make:105: fallo en las instrucciones para el objetivo 'cmTC_8e2fa'
+make[1]: *** [cmTC_8e2fa] Error 1
+make[1]: se sale del directorio '/home/andresvergara/chapter3_ws/build/CMakeFiles/CMakeTmp'
+Makefile:140: fallo en las instrucciones para el objetivo 'cmTC_8e2fa/fast'
+make: *** [cmTC_8e2fa/fast] Error 2
+
+
+

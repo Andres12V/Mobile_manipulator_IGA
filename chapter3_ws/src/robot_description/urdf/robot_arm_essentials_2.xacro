@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="robot_essentials" >
+
+<!--######################################################################-->
+<xacro:macro name="arm_joint" params="prefix parent child originxyz originrpy">
+
+<joint name="${prefix}_joint" type="continuous">
+  <axis xyz="0 0 1"/>
+  <parent link="${parent}"/>
+  <child link="${child}"/>
+  <origin rpy="${originrpy}" xyz="${originxyz}"/>
+</joint>
+
+</xacro:macro>
+
+<!--######################################################################-->
+
+<xacro:macro name="arm_transmission" params="prefix ">
+
+<transmission name="${prefix}_trans" type="SimpleTransmission">
+  <type>transmission_interface/SimpleTransmission</type>
+  <actuator name="${prefix}_motor">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  <joint name="${prefix}_joint">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+</xacro:macro>
+<!--######################################################################-->
+
+</robot>

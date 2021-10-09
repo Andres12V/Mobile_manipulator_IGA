@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<robot name="fanuc_m10ia" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:include filename="$(find fanuc_m10ia_support)/urdf/m10ia_macro.xacro"/>
+  <xacro:fanuc_m10ia prefix=""/>
+
+  <xacro:macro name="arm_joint" params="prefix parent child originxyz originrpy">
+
+<joint name="${prefix}_joint" type="continuous">
+  <axis xyz="0 0 1"/>
+  <parent link="${parent}"/>
+  <child link="${child}"/>
+  <origin rpy="${originrpy}" xyz="${originxyz}"/>
+</joint>
+
+  </xacro:macro>
+</robot>

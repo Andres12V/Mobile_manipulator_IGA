@@ -1,0 +1,2 @@
+fanuc_m10ia_support:fanuc_resources:robot_description
+-DCATKIN_DEVEL_PREFIX=/home/andresvergara/chapter3_ws/devel -DCMAKE_INSTALL_PREFIX=/home/andresvergara/chapter3_ws/install -G Unix Makefiles
